@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Maker Space Hub | FDE × LearnOBots</title>
+  <meta name="description"
+    content="Learn about the Federal Directorate of Education and LearnOBots partnership transforming STEAM education in Pakistan.">
+<link rel="icon" type="image/jpeg" href="/images/LearnObot.jpeg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0066CC',
+            secondary: '#00D9FF',
+            accent: '#FF6B6B',
+            dark: '#0A0D14',
+            light: '#F8FAFC',
+            'fde-green': '#2ECC71',
+            'lob-blue': '#0066CC'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Outfit', 'Poppins', 'sans-serif']
+          },
+          animation: {
+            'aurora': 'aurora 15s linear infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            aurora: {
+              '0%, 100%': { transform: 'translate(0px, 0px) scale(1)' },
+              '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+              '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;800&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #0A0D14;
+      color: #E5E7EB;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Advanced 2026 Styling */
+    h1,
+    h2,
+    h3 {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .bento-hover {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .bento-hover:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(0, 102, 204, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 102, 204, 0.1);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #00D9FF 0%, #0066CC 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0066CC 0%, #0052A3 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(0, 102, 204, 0.5);
+    }
+
+    .nav-active {
+      color: #00D9FF;
+      font-weight: 600;
+    }
+
+    /* Reveal Animations */
+    @keyframes revealUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+    }
+
+    .reveal-1 {
+      animation-delay: 0.1s;
+    }
+
+    .reveal-2 {
+      animation-delay: 0.2s;
+    }
+
+    .reveal-3 {
+      animation-delay: 0.3s;
+    }
+    /* Page responsiveness improvements - navbar and chatbot kept unchanged */
+    .responsive-main {
+      width: 100%;
+      overflow-x: clip;
+    }
+
+    .responsive-shell {
+      width: min(100% - 2rem, 80rem);
+      margin-inline: auto;
+    }
+
+    .hero-title {
+      font-size: clamp(2.35rem, 8vw, 4.5rem);
+      line-height: 1.08;
+      text-wrap: balance;
+    }
+
+    .hero-copy,
+    .section-copy {
+      text-wrap: pretty;
+    }
+
+    .responsive-bento-grid {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      gap: clamp(1rem, 2vw, 2rem);
+    }
+
+    .responsive-card {
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .responsive-card-content {
+      min-width: 0;
+    }
+
+    .responsive-logo-img {
+      width: clamp(6.25rem, 26vw, 10rem);
+      height: clamp(6.25rem, 26vw, 10rem);
+    }
+
+    .responsive-stat-number {
+      font-size: clamp(3rem, 12vw, 4rem);
+      line-height: 1;
+    }
+
+    .cta-panel {
+      width: min(100% - 2rem, 64rem);
+      margin-inline: auto;
+    }
+
+    .footer-shell {
+      width: min(100% - 2rem, 80rem);
+      margin-inline: auto;
+    }
+
+    @media (min-width: 640px) {
+      .responsive-shell,
+      .cta-panel,
+      .footer-shell {
+        width: min(100% - 3rem, 80rem);
+      }
+
+      .hero-title {
+        font-size: clamp(3rem, 7vw, 4.75rem);
+      }
+    }
+
+    @media (min-width: 768px) {
+      .responsive-bento-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .responsive-wide-card {
+        grid-column: span 2 / span 2;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .responsive-bento-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .responsive-wide-card {
+        grid-column: span 2 / span 2;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .hero-title {
+        font-size: clamp(2rem, 12vw, 2.55rem);
+        line-height: 1.12;
+      }
+
+      .responsive-shell,
+      .cta-panel,
+      .footer-shell {
+        width: min(100% - 1rem, 80rem);
+      }
+
+      .responsive-card {
+        border-radius: 1.25rem;
+        padding: 1.25rem !important;
+      }
+
+      .responsive-logo-img {
+        width: 5.75rem;
+        height: 5.75rem;
+      }
+
+      .responsive-stat-number {
+        font-size: 2.75rem;
+      }
+    }
+
+    @media (max-width: 340px) {
+      .hero-title {
+        font-size: 1.85rem;
+      }
+
+      .responsive-card {
+        padding: 1rem !important;
+      }
+
+      .responsive-card h2 {
+        font-size: 1.45rem;
+      }
+    }
+
+    @media (hover: none) {
+      .bento-hover:hover {
+        transform: none;
+      }
+    }
+
+  </style>
+</head>
+
+<body class="antialiased selection:bg-primary/30 selection:text-white">
+
+  <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+    <div
+      class="absolute top-[-10%] left-[-10%] w-[80vw] h-[80vw] md:w-[40vw] md:h-[40vw] rounded-full bg-primary/20 blur-[120px] mix-blend-screen animate-aurora">
+    </div>
+    <div
+      class="absolute bottom-[-10%] right-[-10%] w-[80vw] h-[80vw] md:w-[40vw] md:h-[40vw] rounded-full bg-secondary/10 blur-[120px] mix-blend-screen animate-aurora"
+      style="animation-direction: reverse; animation-delay: -5s;"></div>
+  </div>
+
+  <nav class="fixed w-full top-0 z-50 glass-panel border-b-0 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="index.html" class="flex items-center gap-2 group hover:opacity-80 transition">
+          <img src="images/FDE.jpeg" alt="FDE" class="h-9 w-9 rounded-lg object-cover ring-1 ring-white/10">
+          <img src="images/LearnObot.jpeg" alt="LearnOBots"
+            class="h-9 w-9 rounded-lg object-cover ring-1 ring-white/10">
+          <span class="text-lg font-extrabold tracking-tight ml-2 text-white">Maker<span
+              class="text-secondary">Hub</span></span>
+        </a>
+
+        <div class="hidden md:flex items-center gap-8 bg-white/5 px-6 py-2.5 rounded-full ring-1 ring-white/10">
+          <a href="index.html" class="text-gray-400 hover:text-white text-sm font-medium transition">Home</a>
+          <a href="schools.html" class="text-gray-400 hover:text-white text-sm font-medium transition">Schools</a>
+          <a href="projects.html" class="text-gray-400 hover:text-white text-sm font-medium transition">Projects</a>
+          <a href="about.html" class="nav-active text-sm transition">About</a>
+        </div>
+
+        <div class="hidden md:block">
+          <a href="contact.html" class="btn btn-primary px-6 py-2.5 text-sm">Get in Touch</a>
+        </div>
+
+        <button class="md:hidden text-white p-2" id="hamburger">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+
+      <div
+        class="hidden md:hidden absolute top-[80px] left-0 w-full bg-[#0A0D14] border-b border-white/10 p-6 flex flex-col gap-2 z-[999] shadow-[0_40px_60px_rgba(0,0,0,0.8)]"
+        id="mobile-menu">
+        <a href="index.html"
+          class="p-4 text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-all font-medium border-b border-white/5">Home</a>
+        <a href="schools.html"
+          class="p-4 text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-all font-medium border-b border-white/5">Schools</a>
+        <a href="projects.html"
+          class="p-4 text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-all font-medium border-b border-white/5">Projects</a>
+        <a href="about.html"
+          class="p-4 text-secondary font-semibold hover:bg-white/5 rounded-xl transition-all border-b border-white/5">About</a>
+        <a href="contact.html" class="mt-4 btn btn-primary w-full py-4 text-base shadow-2xl">Get in Touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="responsive-main">
+  <section class="pt-28 sm:pt-36 md:pt-40 pb-12 sm:pb-16 md:pb-20 relative px-0">
+    <div class="responsive-shell max-w-4xl text-center reveal">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel ring-1 ring-white/10 mb-6 sm:mb-8 shadow-2xl">
+        <span class="relative flex h-3 w-3"><span
+            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span><span
+            class="relative inline-flex rounded-full h-3 w-3 bg-secondary"></span></span>
+        <span class="text-xs sm:text-sm font-medium text-gray-300 uppercase tracking-wider">The 2026 Initiative</span>
+      </div>
+      <h1
+        class="hero-title font-extrabold mb-4 sm:mb-6 tracking-tight">
+        Engineering the <br class="hidden sm:block" />
+        <span class="gradient-text">Future of Education</span>
+      </h1>
+      <p class="hero-copy text-sm min-[360px]:text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed px-1 sm:px-0">
+        A groundbreaking alliance between the Federal Directorate of Education and LearnOBots, integrating advanced
+        STEAM curriculums into Pakistan's public schooling infrastructure.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-10 sm:py-14 md:py-16 relative z-10 px-0">
+    <div class="responsive-shell">
+      <div
+        class="responsive-bento-grid">
+
+        <div
+          class="responsive-card responsive-wide-card glass-panel rounded-3xl p-5 sm:p-8 lg:p-12 bento-hover reveal reveal-1 flex flex-col md:flex-row gap-6 sm:gap-8 items-center justify-between group overflow-hidden relative">
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          </div>
+          <div class="responsive-card-content relative z-10 md:w-2/3 text-center md:text-left">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">Federal Directorate of Education</h2>
+            <p class="section-copy text-sm sm:text-base text-gray-400 leading-relaxed mb-5 sm:mb-6">
+              Managing 432 institutions in the capital, FDE is taking a bold step to modernize public education. By
+              deploying cutting-edge Maker Spaces, they are transforming traditional classrooms into dynamic hubs of
+              innovation and technological literacy.
+            </p>
+            <div class="flex flex-wrap justify-center md:justify-start gap-2 sm:gap-3">
+              <span
+                class="px-3 sm:px-4 py-1.5 rounded-full bg-white/5 text-xs font-medium text-gray-300 ring-1 ring-white/10">Est.
+                1967</span>
+              <span
+                class="px-3 sm:px-4 py-1.5 rounded-full bg-white/5 text-xs font-medium text-gray-300 ring-1 ring-white/10">Government
+                Initiative</span>
+            </div>
+          </div>
+          <div class="relative z-10 shrink-0 animate-float mt-4 md:mt-0">
+            <div class="absolute inset-0 bg-green-500/20 blur-2xl rounded-full"></div>
+            <img src="images/FDE.jpeg" alt="FDE"
+              class="responsive-logo-img rounded-2xl object-cover ring-2 ring-white/20 shadow-2xl relative z-10">
+          </div>
+        </div>
+
+        <div
+          class="responsive-card glass-panel rounded-3xl p-5 sm:p-8 bento-hover reveal reveal-2 flex flex-col justify-center items-start relative overflow-hidden group">
+          <div
+            class="absolute top-0 right-0 p-6 sm:p-8 text-5xl sm:text-7xl opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:scale-110 duration-500">
+            🎓</div>
+          <div class="responsive-stat-number text-secondary font-display font-bold mb-2">3000<span
+              class="text-primary">+</span></div>
+          <h3 class="text-lg sm:text-xl font-semibold text-white mb-2">Students Empowered</h3>
+          <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">Directly impacted through intensive STEAM training
+            and hands-on workshops.
+          </p>
+        </div>
+
+        <div
+          class="responsive-card responsive-wide-card glass-panel rounded-3xl p-5 sm:p-8 lg:p-12 bento-hover reveal reveal-3 flex flex-col md:flex-row gap-6 sm:gap-8 items-center justify-between group overflow-hidden relative">
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          </div>
+          <div class="responsive-card-content relative z-10 md:w-2/3 order-2 md:order-1 text-center md:text-left">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">LearnOBots</h2>
+            <p class="section-copy text-sm sm:text-base text-gray-400 leading-relaxed mb-5 sm:mb-6">
+              Pakistan's premier Ed-Tech pioneer. We design bespoke curriculums, engineer DIY hardware kits, and execute
+              intensive teacher-training bootcamps to bridge the chasm between theoretical academics and practical,
+              21st-century industry demands.
+            </p>
+            <div class="flex flex-wrap justify-center md:justify-start gap-2 sm:gap-3">
+              <span
+                class="px-3 sm:px-4 py-1.5 rounded-full bg-white/5 text-xs font-medium text-primary ring-1 ring-primary/30">Robotics</span>
+              <span
+                class="px-3 sm:px-4 py-1.5 rounded-full bg-white/5 text-xs font-medium text-secondary ring-1 ring-secondary/30">AI
+                & IoT</span>
+              <span
+                class="px-3 sm:px-4 py-1.5 rounded-full bg-white/5 text-xs font-medium text-accent ring-1 ring-accent/30">3D
+                Design</span>
+            </div>
+          </div>
+          <div class="relative z-10 shrink-0 animate-float order-1 md:order-2 mb-4 md:mb-0"
+            style="animation-delay: -3s;">
+            <div class="absolute inset-0 bg-primary/20 blur-2xl rounded-full"></div>
+            <img src="images/LearnObot.jpeg" alt="LearnOBots"
+              class="responsive-logo-img rounded-2xl object-cover ring-2 ring-white/20 shadow-2xl relative z-10">
+          </div>
+        </div>
+
+        <div
+          class="responsive-card glass-panel rounded-3xl p-5 sm:p-8 bento-hover reveal reveal-3 flex flex-col justify-center items-start relative overflow-hidden group">
+          <div
+            class="absolute top-0 right-0 p-6 sm:p-8 text-5xl sm:text-7xl opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:scale-110 duration-500">
+            🏫</div>
+          <div class="responsive-stat-number text-primary font-display font-bold mb-2">8</div>
+          <h3 class="text-lg sm:text-xl font-semibold text-white mb-2">Maker Spaces</h3>
+          <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">State-of-the-art innovation labs deployed across
+            prime Islamabad sectors.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 sm:py-16 md:py-24 relative z-10 px-0">
+    <div
+      class="cta-panel glass-panel rounded-3xl sm:rounded-[3rem] p-6 sm:p-12 lg:p-20 text-center reveal border border-white/10 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent"></div>
+      <div class="relative z-10">
+        <h2 class="text-2xl min-[360px]:text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">Witness the Innovation</h2>
+        <p class="section-copy text-sm min-[360px]:text-base sm:text-lg lg:text-xl text-gray-400 mb-8 sm:mb-10 max-w-2xl mx-auto px-1 sm:px-0">From IoT
+          smart homes to autonomous robotics, see what
+          the next generation of Pakistani engineers are building today.</p>
+        <a href="projects.html"
+          class="btn btn-primary w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg">Explore Student
+          Projects</a>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <footer
+    class="border-t border-white/5 pt-16 sm:pt-20 pb-10 px-4 sm:px-6 lg:px-8 bg-black/40 backdrop-blur-md relative z-10">
+    <div class="footer-shell">
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12 sm:mb-16 text-center sm:text-left">
+
+        <div class="col-span-1 sm:col-span-2 lg:col-span-1 flex flex-col items-center sm:items-start">
+          <div class="flex items-center gap-4 mb-6">
+            <div
+              class="bg-white/5 p-2 rounded-2xl ring-1 ring-white/10 shadow-[0_0_20px_rgba(46,204,113,0.15)] group hover:ring-white/20 transition-all">
+              <img src="images/FDE.jpeg" alt="FDE"
+                class="h-12 w-12 sm:h-14 sm:w-14 rounded-xl object-cover transform group-hover:scale-105 transition-transform duration-300">
+            </div>
+
+            <div
+              class="bg-white/5 p-2 rounded-2xl ring-1 ring-white/10 shadow-[0_0_20px_rgba(0,102,204,0.15)] group hover:ring-white/20 transition-all">
+              <img src="images/LearnObot.jpeg" alt="LearnOBots"
+                class="h-12 w-12 sm:h-14 sm:w-14 rounded-xl object-cover transform group-hover:scale-105 transition-transform duration-300">
+            </div>
+          </div>
+          <p class="text-gray-500 text-sm leading-relaxed mb-6 max-w-xs sm:max-w-none">Pioneering STEAM education
+            architecture across
+            Pakistan's
+            federal schooling infrastructure.</p>
+
+          <div class="flex flex-wrap justify-center sm:justify-start gap-3">
+            <a href="https://www.facebook.com/learnobots" target="_blank" aria-label="Facebook"
+              class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#1877F2] hover:border-[#1877F2] transform hover:-translate-y-1 transition-all duration-300 shadow-lg">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path
+                  d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
+            </a>
+
+            <a href="https://www.instagram.com/learnobotsofficial/" target="_blank" aria-label="Instagram"
+              class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-gray-400 hover:text-white hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] hover:border-[#e6683c] transform hover:-translate-y-1 transition-all duration-300 shadow-lg">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.07M12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+              </svg>
+            </a>
+
+            <a href="https://www.linkedin.com/company/learnobots/" target="_blank" aria-label="LinkedIn"
+              class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#0A66C2] hover:border-[#0A66C2] transform hover:-translate-y-1 transition-all duration-300 shadow-lg">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+            </a>
+
+            <a href="https://www.youtube.com/@LearnOBotsofficial" target="_blank" aria-label="YouTube"
+              class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#FF0000] hover:border-[#FF0000] transform hover:-translate-y-1 transition-all duration-300 shadow-lg">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+              </svg>
+            </a>
+
+            <a href="https://wa.me/923351166117" target="_blank" aria-label="WhatsApp"
+              class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#25D366] hover:border-[#25D366] transform hover:-translate-y-1 transition-all duration-300 shadow-lg">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-4 sm:mb-6 tracking-wide text-sm uppercase">Navigation</h4>
+          <ul class="space-y-2 sm:space-y-3 text-sm text-gray-500">
+            <li><a href="index.html" class="hover:text-primary transition">Home</a></li>
+            <li><a href="schools.html" class="hover:text-primary transition">Schools</a></li>
+            <li><a href="projects.html" class="hover:text-primary transition">Projects</a></li>
+            <li><a href="about.html" class="hover:text-primary transition text-white">About</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-4 sm:mb-6 tracking-wide text-sm uppercase">Quick Links</h4>
+          <ul class="space-y-2 sm:space-y-3 text-sm text-gray-500">
+            <li><a href="projects.html" class="hover:text-primary transition">Student Portfolio</a></li>
+            <li><a href="contact.html" class="hover:text-primary transition">Partnership Inquiry</a></li>
+            <li><a href="projects.html" class="hover:text-primary transition">Media Kit</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-4 sm:mb-6 tracking-wide text-sm uppercase">Contact</h4>
+          <ul class="space-y-2 sm:space-y-3 text-sm text-gray-500">
+            <li>NSTP, NUST, H-12</li>
+            <li>Islamabad, Pakistan</li>
+            <li><a href="mailto:contactus@learnobots.com"
+                class="hover:text-primary transition break-all">contactus@learnobots.com</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div
+        class="border-t border-white/5 pt-6 sm:pt-8 flex flex-col md:flex-row justify-center md:justify-between items-center gap-4 text-xs text-gray-600 font-medium text-center md:text-left">
+        <p>© 2026 Maker Space Hub. A joint initiative by FDE and LearnOBots.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end" id="chatbot-container">
+
+    <div
+      class="glass-panel rounded-2xl border border-white/10 shadow-2xl hidden flex flex-col mb-4 origin-bottom-right transition-all bg-[#0A0D14] overflow-hidden"
+      id="chatbot-window"
+      style="width: calc(100vw - 2rem); max-width: 380px; height: 500px; max-height: calc(100vh - 120px);">
+
+      <div class="border-b border-white/5 p-4 flex justify-between items-center flex-shrink-0 bg-white/5">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="text-2xl flex-shrink-0">🤖</div>
+          <div class="min-w-0">
+            <div class="font-bold text-white text-sm">MakerBot</div>
+            <div class="text-[10px] text-green-400 font-bold tracking-wider uppercase">Online</div>
+          </div>
+        </div>
+        <button
+          class="text-gray-500 hover:text-white transition flex-shrink-0 text-lg w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10"
+          id="chatbot-close">✕</button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto p-4 space-y-3 min-h-0" id="chatbot-messages">
+        <div
+          class="bg-white/5 rounded-2xl rounded-tl-sm p-3 max-w-[85%] text-sm text-gray-300 shadow-sm border border-white/5 break-words">
+          Hello! I'm MakerBot 🤖 Ask me about FDE, LearnOBots, our 8 schools, or our mission!
+        </div>
+      </div>
+
+      <div class="border-t border-white/5 p-4 flex gap-2 flex-shrink-0 bg-black/40">
+        <input type="text" id="chatbot-input" placeholder="Type a message..."
+          class="flex-1 bg-white/5 border border-white/10 rounded-full px-4 py-2.5 text-white placeholder-gray-500 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 text-sm min-w-0 transition-all">
+        <button id="chatbot-send"
+          class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white hover:scale-105 transition-transform flex-shrink-0 shadow-lg">→</button>
+      </div>
+    </div>
+
+    <button id="chatbot-trigger"
+      class="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center text-3xl shadow-[0_0_30px_rgba(0,102,204,0.3)] hover:shadow-[0_0_40px_rgba(0,102,204,0.5)] transition-all transform hover:scale-110 relative z-50 ring-4 ring-[#0A0D14]">
+      🤖
+    </button>
+  </div>
+  <script src="model/js/data.js"></script>
+  <script src="model/js/script.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      hamburger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

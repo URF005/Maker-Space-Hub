@@ -79,7 +79,7 @@ const SCHOOLS = [
   },
   {
     id: 8,
-    name: "IMCG I-8-3",
+    name: "IMCB I-8-3",
     location: "I-8-3, Islamabad",
     gallery: [
       "/images/IMCG I-8-3/pic1.jpeg", "/images/IMCG I-8-3/pic2.jpeg"
